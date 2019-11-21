@@ -1,0 +1,17 @@
+server:
+  port: 8100
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    service-url:
+     # defaultZone: http://${eureka.instance.hostname}:9100/eureka/ #eureka服务器地址；
+       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    register-with-eureka: false #是否需要将自己注册都注册中心(搭建集群是需要)
+    fetch-registry: false #是否应从eureka服务器获取eureka注册表信息（搭建集群是需要)
+  server:
+    enable-self-preservation: false #是否取消自我保护机制(默认：true：开启)
+    eviction-interval-timer-in-ms: 2000 #间隔的时间将服务剔除；
+spring:
+  application:
+    name: server-eureka #配置服务别名

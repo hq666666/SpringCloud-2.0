@@ -1,0 +1,17 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: provider
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:8100/eureka/,http://localhost:9100/eureka/ #当eureka注册中心(集群)需指定多个eureka服务地址
+      defaultZone: http://localhost:8100/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  #心跳机制检测与续约时间
+  #测试时将值设置小写，保证服务关闭后注册中心及时剔除服务
+  instance:
+    lease-renewal-interval-in-seconds: 1  #向Eureka服务端发送心跳包，间隔时间
+    lease-expiration-duration-in-seconds: 2 #Eureka在收到最后一次信息之后等待的时间(默认：s)，超过则剔除

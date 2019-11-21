@@ -1,0 +1,13 @@
+server:
+  port: 9100
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8100/eureka/ #eureka搭建集群通过相互注册，实现一组注册中心，达到高可用效果；
+    register-with-eureka: true #搭建集群是需要设置为true
+    fetch-registry: true #搭建集群需要设置为true
+spring:
+  application:
+    name: server-eureka #配置服务别名(注意：别名要一致)
